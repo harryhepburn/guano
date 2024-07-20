@@ -8,15 +8,37 @@ def main():
     st.title("GUANO")
     st.subheader("Kalkulator Kos Rawatan Ganoderma")
 
-    st.write("""
-    ### Kategori Jangkitan Ganoderma:
-    - **Kategori A**: Pokok subur, tiada 'frond skirting', masih produktif tetapi TERDAPAT JASAD BERBUAH
-    - **Kategori B**: Pokok tidak subur, simptom 'frond skirting', tidak produktif dan TERDAPAT JASAD BERBUAH
-    - **Kategori C**: Pokok yang telah tumbang, patah atas atau bawah, mati dan TERDAPAT JASAD BERBUAH
-    - **Kategori D**: Pokok samada subur atau tidak subur dengan simptom 'unopen spears (>3fronds)', 'frond skirting' dan pereputan pada pangkal atau atas namun TIADA JASAD BERBUAH
-    - **Kategori E**: Pokok Sihat
-    - **Kategori F**: Pokok selain kategori di atas, menunjukkan simptom kekurangan nutrien atau 'water stress'
-    """)
+    import pandas as pd
+
+
+
+st.write("### Kategori Jangkitan Ganoderma:")
+
+# Create a DataFrame for the categories
+df_categories = pd.DataFrame({
+    'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
+    'Deskripsi': [
+        'Pokok subur, tiada "frond skirting", masih produktif tetapi TERDAPAT JASAD BERBUAH',
+        'Pokok tidak subur, simptom "frond skirting", tidak produktif dan TERDAPAT JASAD BERBUAH',
+        'Pokok yang telah tumbang, patah atas atau bawah, mati dan TERDAPAT JASAD BERBUAH',
+        'Pokok samada subur atau tidak subur dengan simptom "unopen spears (>3fronds)", "frond skirting" dan pereputan pada pangkal atau atas namun TIADA JASAD BERBUAH',
+        'Pokok Sihat',
+        'Pokok selain kategori di atas, menunjukkan simptom kekurangan nutrien atau "water stress"'
+    ]
+})
+
+# Function to apply alternating row colors
+def color_rows(row):
+    return ['background-color: #f0f2f6' if i%2==0 else '' for i in range(len(row))]
+
+# Display the styled DataFrame
+st.dataframe(df_categories.style.apply(color_rows, axis=1).set_properties(**{
+    'padding': '10px',
+    'border': '1px solid #ddd',
+    'text-align': 'left'
+}), height=300)
+
+
 
     st.write("---")
 
