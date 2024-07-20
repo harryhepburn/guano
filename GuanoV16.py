@@ -14,12 +14,12 @@ def main():
     df_categories = pd.DataFrame({
         'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
         'Deskripsi': [
-            '1. Pokok subur tiada *frond skirting*<br>2. Masih produktif<br>3. TERDAPAT JASAD BERBUAH',
-            '1. Pokok tidak subur<br>2. Simptom *frond skirting*<br>3. Tidak produktif<br>4. TERDAPAT JASAD BERBUAH',
+            '1. Pokok subur tiada frond skirting<br>2. Masih produktif<br>3. TERDAPAT JASAD BERBUAH',
+            '1. Pokok tidak subur<br>2. Simptom frond skirting<br>3. Tidak produktif<br>4. TERDAPAT JASAD BERBUAH',
             '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati<br>4. TERDAPAT JASAD BERBUAH',
-            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. *Unopen spears (>3 *fronds*)"*<br>&nbsp;&nbsp;b. *Frond skirting*<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. TIADA JASAD BERBUAH',
+            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. Unopen spears (>3 fronds)<br>&nbsp;&nbsp;b. *Frond skirting*<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. TIADA JASAD BERBUAH',
             'Pokok Sihat',
-            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau *water stress*'
+            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau water stress'
         ]
     })
 
@@ -57,8 +57,10 @@ def main():
     st.subheader("Hasil Analisis")
     pokok_sakit = serangan_a + serangan_b + serangan_c + serangan_d + serangan_f
     sanitasi = serangan_b + serangan_c
+    pokok_sihat = serangan_e
 
-    col3, col4, col5 = st.columns(3)
+    colx, col3, col4, col5 = st.columns(3)
+    colx.metric("Jumlah Pokok Sihat", pokok_sihat)
     col3.metric("Jumlah Pokok Tidak Sihat", pokok_sakit)
     col4.metric("Pokok Memerlukan 'Soil Mounding'", serangan_a)
     col5.metric("Pokok Memerlukan Sanitasi", sanitasi)
