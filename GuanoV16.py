@@ -14,12 +14,12 @@ def main():
     df_categories = pd.DataFrame({
         'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
         'Deskripsi': [
-            '1. Pokok subur tiada *"frond skirting"*<br>2. Masih produktif tetapi TERDAPAT JASAD BERBUAH',
-            '1. Pokok tidak subur<br>2. Simptom *"frond skirting"*<br>3. Tidak produktif<br>4. TERDAPAT JASAD BERBUAH',
-            '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati dan TERDAPAT JASAD BERBUAH',
-            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. *"unopen spears (>3fronds)"*<br>&nbsp;&nbsp;b. *"frond skirting"*<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. TIADA JASAD BERBUAH',
+            '1. Pokok subur tiada *frond skirting*<br>2. Masih produktif<br>3. TERDAPAT JASAD BERBUAH',
+            '1. Pokok tidak subur<br>2. Simptom *frond skirting*<br>3. Tidak produktif<br>4. TERDAPAT JASAD BERBUAH',
+            '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati<br>4. TERDAPAT JASAD BERBUAH',
+            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. *Unopen spears (>3 *fronds*)"*<br>&nbsp;&nbsp;b. *Frond skirting*<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. TIADA JASAD BERBUAH',
             'Pokok Sihat',
-            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau _water stress_'
+            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau *water stress*'
         ]
     })
 
@@ -44,7 +44,6 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        nombor_lot = st.text_input("No. Peringkat/Blok/Lot")
         serangan_a = st.number_input("Bilangan Pokok Kategori A", min_value=0, value=0)
         serangan_b = st.number_input("Bilangan Pokok Kategori B", min_value=0, value=0)
         serangan_c = st.number_input("Bilangan Pokok Kategori C", min_value=0, value=0)
@@ -106,7 +105,7 @@ def main():
 
     dirawat_yield = hasilsemasa
     dibiar_yield = hasilsemasa
-    dirawat_reduction = 0.3
+    dirawat_reduction = 0.1
     dibiar_reduction = 0.6
 
     tahuntuai1 = tahuntuai + 1
