@@ -8,7 +8,7 @@ def main():
     st.title("GUANO")
     st.subheader("Kalkulator Kos Rawatan Ganoderma")
 
-   st.write("### Kategori Jangkitan Ganoderma:")
+    st.write("### Kategori Jangkitan Ganoderma:")
 
     # Create a DataFrame for the categories
     df_categories = pd.DataFrame({
@@ -34,8 +34,6 @@ def main():
         'text-align': 'left'
     }), height=300)
 
-
-
     st.write("---")
 
     col1, col2 = st.columns(2)
@@ -45,11 +43,13 @@ def main():
         serangan_a = st.number_input("Bilangan Pokok Kategori A", min_value=0, value=0)
         serangan_b = st.number_input("Bilangan Pokok Kategori B", min_value=0, value=0)
         serangan_c = st.number_input("Bilangan Pokok Kategori C", min_value=0, value=0)
+        cost_soil_mounding = st.number_input("Kos 'Soil Mounding' per pokok (RM)", min_value=0.0, value=15.0)
 
     with col2:
         serangan_d = st.number_input("Bilangan Pokok Kategori D", min_value=0, value=0)
         serangan_e = st.number_input("Bilangan Pokok Kategori E", min_value=0, value=0)
         serangan_f = st.number_input("Bilangan Pokok Kategori F", min_value=0, value=0)
+        cost_sanitasi = st.number_input("Kos Sanitasi per pokok (RM)", min_value=0.0, value=30.0)
 
     pokok_sakit = serangan_a + serangan_b + serangan_c + serangan_d + serangan_f
     sanitasi = serangan_b + serangan_c
@@ -64,14 +64,14 @@ def main():
     st.write("---")
     st.subheader("Pengiraan Kos")
 
-    cost_a = serangan_a * 15
-    cost_b_c = sanitasi * 30
+    cost_a = serangan_a * cost_soil_mounding
+    cost_b_c = sanitasi * cost_sanitasi
     total_cost = cost_a + cost_b_c
 
     col6, col7, col8 = st.columns(3)
-    col6.metric("Kos 'Soil Mounding'", f"RM {cost_a}")
-    col7.metric("Kos Sanitasi Pokok", f"RM {cost_b_c}")
-    col8.metric("Jumlah Kos", f"RM {total_cost}")
+    col6.metric("Kos 'Soil Mounding'", f"RM {cost_a:.2f}")
+    col7.metric("Kos Sanitasi Pokok", f"RM {cost_b_c:.2f}")
+    col8.metric("Jumlah Kos", f"RM {total_cost:.2f}")
 
     st.write("---")
     st.subheader("Anggaran Kerugian Hasil")
