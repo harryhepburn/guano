@@ -14,7 +14,8 @@ def main():
     df_categories = pd.DataFrame({
         'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
         'Deskripsi': [
-            'Pokok subur, tiada "frond skirting", masih produktif tetapi TERDAPAT JASAD BERBUAH',
+            '- Pokok subur,
+            - Tiada "frond skirting", masih produktif tetapi TERDAPAT JASAD BERBUAH',
             'Pokok tidak subur, simptom "frond skirting", tidak produktif dan TERDAPAT JASAD BERBUAH',
             'Pokok yang telah tumbang, patah atas atau bawah, mati dan TERDAPAT JASAD BERBUAH',
             'Pokok samada subur atau tidak subur dengan simptom "unopen spears (>3fronds)", "frond skirting" dan pereputan pada pangkal atau atas namun TIADA JASAD BERBUAH',
