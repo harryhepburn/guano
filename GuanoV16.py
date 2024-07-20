@@ -19,7 +19,7 @@ def main():
             '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati dan TERDAPAT JASAD BERBUAH',
             '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. *"unopen spears (>3fronds)"*<br>&nbsp;&nbsp;b. *"frond skirting"*<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. TIADA JASAD BERBUAH',
             'Pokok Sihat',
-            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau *"water stress"*'
+            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau _water stress_'
         ]
     })
 
@@ -39,12 +39,12 @@ def main():
   
 
     st.write("---")
-    st.subheader("Input Data")
+    st.subheader("Bancian")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        nombor_lot = st.text_input("ID Lot")
+        nombor_lot = st.text_input("No. Peringkat/Blok/Lot")
         serangan_a = st.number_input("Bilangan Pokok Kategori A", min_value=0, value=0)
         serangan_b = st.number_input("Bilangan Pokok Kategori B", min_value=0, value=0)
         serangan_c = st.number_input("Bilangan Pokok Kategori C", min_value=0, value=0)
