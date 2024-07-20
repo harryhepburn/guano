@@ -143,7 +143,8 @@ def main():
     st.success("Terima Kasih Kerana Menggunakan GUANO")
 
     st.write("""
-    - Dibangunkan oleh Team KIK Wilayah Raja Alias: **GUANO** Rafizan, Haslina, Izzati, dan Noorain
+    - Dibangunkan oleh Team KIK Wilayah Raja Alias: **GUANO** 
+    - Ahli Kumpulan: Rafizan, Haslina, Izzati, dan Noorain
     - RAhandal
     - SEGALANYA FELDA
     """)
