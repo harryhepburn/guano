@@ -31,7 +31,7 @@ def main():
     }).set_table_styles([
         {'selector': 'th', 'props': [('text-align', 'center')]},
         {'selector': 'td', 'props': [('text-align', 'left')]}
-    ]).apply(lambda x: ['background-color: #f0f2f6' if i%2==0 else '' for i in range(len(x))], axis=0)
+    ]).apply(lambda x: ['background-color: #D3D3D3' if i%2==0 else '' for i in range(len(x))], axis=0)
 
     # Display the styled DataFrame
     st.write(styled_df.to_html(escape=False), unsafe_allow_html=True)
