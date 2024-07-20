@@ -5,7 +5,7 @@ import pandas as pd
 def main():
     st.set_page_config(page_title="GUANO Calculator", page_icon="🌴", layout="wide")
     
-    st.title("GUANO v1.1")
+    st.title("GUANO")
     st.subheader("Kalkulator Kos Rawatan Ganoderma")
 
     st.write("""
@@ -75,7 +75,7 @@ def main():
         st.warning(f"Jumlah kos adalah lebih daripada kerugian sebanyak RM {abs(bezarugi):.2f}")
 
     st.write("---")
-    st.subheader("Proyeksi Hasil")
+    st.subheader("Anggaran Hasil")
 
     hasilsemasa = (0.1 * serangan_a) + (0.1 * serangan_d) + (0.18 * serangan_e) + (0.15 * serangan_f)
     st.metric("Hasil Semasa", f"{hasilsemasa:.2f} MT/Tahun")
