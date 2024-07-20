@@ -117,5 +117,10 @@ def main():
     st.write("---")
     st.success("Terima Kasih Kerana Menggunakan GUANO")
 
+    st.write("""
+    Dibangunkan oleh Team KIK Wilayah Raja Alias: **GUANO**
+    RAhandal
+    SEGALANYA FELDA
+    """)
 if __name__ == "__main__":
     main()
