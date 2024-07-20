@@ -14,27 +14,30 @@ def main():
     df_categories = pd.DataFrame({
         'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
         'Deskripsi': [
-            '- Pokok subur,
-            - Tiada "frond skirting", masih produktif tetapi TERDAPAT JASAD BERBUAH',
-            'Pokok tidak subur, simptom "frond skirting", tidak produktif dan TERDAPAT JASAD BERBUAH',
-            'Pokok yang telah tumbang, patah atas atau bawah, mati dan TERDAPAT JASAD BERBUAH',
-            'Pokok samada subur atau tidak subur dengan simptom "unopen spears (>3fronds)", "frond skirting" dan pereputan pada pangkal atau atas namun TIADA JASAD BERBUAH',
+            '1. Pokok subur tiada *"frond skirting"*<br>2. Masih produktif tetapi TERDAPAT JASAD BERBUAH',
+            '1. Pokok tidak subur<br>2. Simptom *"frond skirting"*<br>3. Tidak produktif<br>4. TERDAPAT JASAD BERBUAH',
+            '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati dan TERDAPAT JASAD BERBUAH',
+            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. *"unopen spears (>3fronds)"*<br>&nbsp;&nbsp;b. *"frond skirting"*<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. TIADA JASAD BERBUAH',
             'Pokok Sihat',
-            'Pokok selain kategori di atas, menunjukkan simptom kekurangan nutrien atau "water stress"'
+            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau *"water stress"*'
         ]
     })
 
-    # Function to apply alternating row colors
-    def color_rows(row):
-        return ['background-color: #f0f2f6' if i%2==0 else '' for i in range(len(row))]
+    # Function to apply alternating row colors and center-align text
+    def style_df(df):
+        return df.style.set_properties(**{
+            'text-align': 'left',
+            'padding': '10px',
+            'border': '1px solid #ddd'
+        }).set_table_styles([
+            {'selector': 'th', 'props': [('text-align', 'center')]},
+            {'selector': 'td', 'props': [('text-align', 'left')]}
+        ]).apply(lambda x: ['background-color: #f0f2f6' if i%2==0 else '' for i in range(len(x))], axis=0)
 
     # Display the styled DataFrame
-    st.dataframe(df_categories.style.apply(color_rows, axis=1).set_properties(**{
-        'padding': '10px',
-        'border': '1px solid #ddd',
-        'text-align': 'left'
-    }), height=300)
+    st.write(df_categories.style.pipe(style_df).to_html(escape=False), unsafe_allow_html=True)
 
+  
     st.write("---")
 
     col1, col2 = st.columns(2)
