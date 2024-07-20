@@ -37,8 +37,8 @@ def main():
     # Display the styled DataFrame
     st.write(df_categories.style.pipe(style_df).to_html(escape=False), unsafe_allow_html=True)
 
-  
     st.write("---")
+    st.subheader("Input Data")
 
     col1, col2 = st.columns(2)
 
@@ -47,19 +47,17 @@ def main():
         serangan_a = st.number_input("Bilangan Pokok Kategori A", min_value=0, value=0)
         serangan_b = st.number_input("Bilangan Pokok Kategori B", min_value=0, value=0)
         serangan_c = st.number_input("Bilangan Pokok Kategori C", min_value=0, value=0)
-        cost_soil_mounding = st.number_input("Kos 'Soil Mounding' per pokok (RM)", min_value=0.0, value=15.0)
 
     with col2:
         serangan_d = st.number_input("Bilangan Pokok Kategori D", min_value=0, value=0)
         serangan_e = st.number_input("Bilangan Pokok Kategori E", min_value=0, value=0)
         serangan_f = st.number_input("Bilangan Pokok Kategori F", min_value=0, value=0)
-        cost_sanitasi = st.number_input("Kos Sanitasi per pokok (RM)", min_value=0.0, value=30.0)
-
-    pokok_sakit = serangan_a + serangan_b + serangan_c + serangan_d + serangan_f
-    sanitasi = serangan_b + serangan_c
 
     st.write("---")
     st.subheader("Hasil Analisis")
+    pokok_sakit = serangan_a + serangan_b + serangan_c + serangan_d + serangan_f
+    sanitasi = serangan_b + serangan_c
+
     col3, col4, col5 = st.columns(3)
     col3.metric("Jumlah Pokok Tidak Sihat", pokok_sakit)
     col4.metric("Pokok Memerlukan 'Soil Mounding'", serangan_a)
@@ -67,6 +65,9 @@ def main():
 
     st.write("---")
     st.subheader("Pengiraan Kos")
+
+    cost_soil_mounding = st.number_input("Kos 'Soil Mounding' per pokok (RM)", min_value=0.0, value=15.0)
+    cost_sanitasi = st.number_input("Kos Sanitasi per pokok (RM)", min_value=0.0, value=30.0)
 
     cost_a = serangan_a * cost_soil_mounding
     cost_b_c = sanitasi * cost_sanitasi
