@@ -23,19 +23,20 @@ def main():
         ]
     })
 
-    # Function to apply alternating row colors and center-align text
-    def style_df(df):
-        return df.style.set_properties(**{
-            'text-align': 'left',
-            'padding': '10px',
-            'border': '1px solid #ddd'
-        }).set_table_styles([
-            {'selector': 'th', 'props': [('text-align', 'center')]},
-            {'selector': 'td', 'props': [('text-align', 'left')]}
-        ]).apply(lambda x: ['background-color: #f0f2f6' if i%2==0 else '' for i in range(len(x))], axis=0)
+    # Apply styling to the DataFrame
+    styled_df = df_categories.style.set_properties(**{
+        'text-align': 'left',
+        'padding': '10px',
+        'border': '1px solid #ddd'
+    }).set_table_styles([
+        {'selector': 'th', 'props': [('text-align', 'center')]},
+        {'selector': 'td', 'props': [('text-align', 'left')]}
+    ]).apply(lambda x: ['background-color: #f0f2f6' if i%2==0 else '' for i in range(len(x))], axis=0)
 
     # Display the styled DataFrame
-    st.write(df_categories.style.pipe(style_df).to_html(escape=False), unsafe_allow_html=True)
+    st.write(styled_df.to_html(escape=False), unsafe_allow_html=True)
+
+  
 
     st.write("---")
     st.subheader("Input Data")
