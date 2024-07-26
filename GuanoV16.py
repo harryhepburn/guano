@@ -14,10 +14,10 @@ def main():
     df_categories = pd.DataFrame({
         'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
         'Deskripsi': [
-            '1. Pokok subur tiada frond skirting<br>2. Masih produktif<br>3. TERDAPAT JASAD BERBUAH',
-            '1. Pokok tidak subur<br>2. Simptom frond skirting<br>3. Tidak produktif<br>4. TERDAPAT JASAD BERBUAH',
-            '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati<br>4. TERDAPAT JASAD BERBUAH',
-            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. Unopen spears (>3 fronds)<br>&nbsp;&nbsp;b. *Frond skirting*<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. TIADA JASAD BERBUAH',
+            '1. Pokok subur tiada frond skirting<br>2. Masih produktif<br>3. Ada Jasad Berbuah',
+            '1. Pokok tidak subur<br>2. Simptom frond skirting<br>3. Tidak produktif<br>4. Ada Jasad Berbuah',
+            '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati<br>4. Ada Jasad Berbuah',
+            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. Unopen spears (>3 fronds)<br>&nbsp;&nbsp;b. Frond skirting<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. Tiada Jasad Berbuah',
             'Pokok Sihat',
             '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau water stress'
         ]
@@ -127,6 +127,7 @@ def main():
         'Tiada Kawalan (MT)': dibiar_yields
     })
 
+    st.write('Nota: Anggaran dibuat menggunakan andaian pengurangan hasil sehingga 60% setahun jika dibiar tanpa rawatan.')
     st.write(df)
 
     fig, ax = plt.subplots(figsize=(10, 6))
