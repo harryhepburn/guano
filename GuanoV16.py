@@ -127,8 +127,9 @@ def main():
         'Tiada Kawalan (MT)': dibiar_yields
     })
 
-    st.write('Nota: Anggaran dibuat menggunakan andaian pengurangan hasil sehingga 60% setahun jika dibiar tanpa rawatan.')
+    
     st.write(df)
+    st.write('Nota: Andaian pengurangan hasil sehingga 60% setahun jika dibiar tanpa kawalan dan 10% jika dikawal.')
 
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(years, dirawat_yields, label='Kawalan')
