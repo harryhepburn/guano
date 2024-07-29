@@ -145,10 +145,10 @@ def main():
     st.success("Terima Kasih Kerana Menggunakan GUANO")
 
     st.write("""
-    - Dibangunkan oleh Team KIK Wilayah Raja Alias: **GUANO** 
+    - Dibangunkan oleh Team KIK Wilayah Raja Alias: **R.A.I.N** 
     - Ahli Kumpulan: Rafizan, Haslina, Izzati, dan Noorain
-    - RAhandal
-    - SEGALANYA FELDA
+    - #RAhandal
+    - #SEGALANYA FELDA
     """)
     
 if __name__ == "__main__":
