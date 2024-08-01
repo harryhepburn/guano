@@ -42,8 +42,7 @@ def main():
     st.subheader("Panduan Bergambar Simptom Ganoderma")
 
     components.iframe("https://docs.google.com/presentation/d/e/2PACX-1vScJ2zNxKlYKmsZbJkDxOy3ht9knLu_RypRmhgFmdvs8TWGQEksY_F-Gvp20G3Vng/embed?start=false&loop=false&delayms=3000", height=432)
-    components.iframe("https://www.canva.com/design/DAGMUfmT89Y/xU1UAy0TlMqu6HPAzoGrsQ/view", height=432)
-
+    
     st.write("---")
     st.subheader("Bancian")
 
