@@ -73,8 +73,8 @@ def main():
     st.write("---")
     st.subheader("Pengiraan Kos")
 
-    cost_soil_mounding = st.number_input("Kos 'Soil Mounding' per pokok (RM)", min_value=0.0, value=15.0)
-    cost_sanitasi = st.number_input("Kos Sanitasi per pokok (RM)", min_value=0.0, value=30.0)
+    cost_soil_mounding = st.number_input("Kos 'Soil Mounding' per pokok (RM)", min_value=0.0, value=20.0)
+    cost_sanitasi = st.number_input("Kos Sanitasi per pokok (RM)", min_value=0.0, value=35.0)
 
     cost_a = serangan_a * cost_soil_mounding
     cost_b_c = sanitasi * cost_sanitasi
@@ -88,7 +88,7 @@ def main():
     st.write("---")
     st.subheader("Anggaran Kerugian Hasil")
 
-    hargaBTS = st.number_input("Harga BTS (RM/MT)", min_value=0.0, value=500.0)
+    hargaBTS = st.number_input("Harga BTS (RM/MT)", min_value=0.0, value=840.0)
     tahuntuai = st.number_input("Tahun Tuai", min_value=1, max_value=25, value=10)
 
     kerugian1 = (sanitasi * 0.18) + (serangan_a * 0.8)
