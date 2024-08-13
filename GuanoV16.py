@@ -152,25 +152,25 @@ def main():
 
 
 
-def create_pdf():
-    pdf = FPDF()
-    pdf.add_page()
-    pdf.set_font("Arial", size = 12)
-    pdf.cell(200, 10, txt = "This is a PDF example", ln = True, align = 'C')
-    pdf_file = "/tmp/example.pdf"
-    pdf.output(pdf_file)
-    return pdf_file
+    def create_pdf():
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font("Arial", size = 12)
+        pdf.cell(200, 10, txt = "This is a PDF example", ln = True, align = 'C')
+        pdf_file = "/tmp/example.pdf"
+        pdf.output(pdf_file)
+        return pdf_file
 
-st.title("PDF Download Example")
 
-if st.button("Generate PDF"):
-    pdf_file = create_pdf()
-    st.download_button(
-        label="Download PDF",
-        data=open(pdf_file, "rb").read(),
-        file_name="example.pdf",
-        mime="application/pdf"
-    )
+
+    if st.button("Generate PDF"):
+        pdf_file = create_pdf()
+        st.download_button(
+            label="Download PDF",
+            data=open(pdf_file, "rb").read(),
+            file_name="example.pdf",
+            mime="application/pdf"
+        )
 
 
     st.write("""
