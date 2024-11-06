@@ -39,9 +39,7 @@ def main():
     # Display the styled DataFrame
     st.write(styled_df.to_html(escape=False), unsafe_allow_html=True)
 
-    for index, row in df_categories.iterrows():
-        st.markdown(f"**{row['Kategori']}**: {row['Deskripsi']}", unsafe_allow_html=True)
-    
+     
     st.write("---")
     st.subheader("Panduan Bergambar Simptom Ganoderma")
 
