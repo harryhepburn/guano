@@ -17,7 +17,7 @@ def main():
     df_categories = pd.DataFrame({
         'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
         'Deskripsi': [
-            '1. Pokok subur, tiada frond skirting_<br>2. Masih produktif<br>3. Ada jasad berbuah',
+            '1. Pokok subur, tiada frond skirting<br>2. Masih produktif<br>3. Ada jasad berbuah',
             '1. Pokok tidak subur<br>2. Ada frond skirting<br>3. Tidak produktif<br>4. Ada jasad berbuah',
             '1. Pokok yang telah tumbang<br>2. Batang patah di bahagian atas atau bawah<br>3. Mati<br>4. Ada jasad berbuah',
             '1. Pokok tidak subur atau kelihatan stress<br>2. Ada frond skirting<br>3. Tiada Jasad Berbuah<br>4. Tiada batang mereput dan miselium putih pada pangkal pokok',
