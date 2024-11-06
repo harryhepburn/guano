@@ -8,7 +8,7 @@ import streamlit.components.v1 as components
 def main():
     st.set_page_config(page_title="GUANO Calculator", page_icon="🌴", layout="wide")
     
-    st.title("GUANO")
+    st.title("GUANO CALCULATOR")
     st.subheader("Kalkulator Kos Rawatan Ganoderma")
 
     st.write("### Kategori Jangkitan Ganoderma:")
@@ -17,12 +17,12 @@ def main():
     df_categories = pd.DataFrame({
         'Kategori': ['A', 'B', 'C', 'D', 'E', 'F'],
         'Deskripsi': [
-            '1. Pokok subur tiada frond skirting<br>2. Masih produktif<br>3. Ada Jasad Berbuah',
-            '1. Pokok tidak subur<br>2. Simptom frond skirting<br>3. Tidak produktif<br>4. Ada Jasad Berbuah',
-            '1. Pokok yang telah tumbang<br>2. Patah atas atau bawah<br>3. Mati<br>4. Ada Jasad Berbuah',
-            '1. Pokok subur atau tidak subur dengan simptom berikut:<br>&nbsp;&nbsp;a. Unopen spears (>3 fronds)<br>&nbsp;&nbsp;b. Frond skirting<br>&nbsp;&nbsp;c. Pereputan pada pangkal atau atas<br>2. Tiada Jasad Berbuah',
+            '1. Pokok subur, tiada 'frond skirting'<br>2. Masih produktif<br>3. Ada jasad berbuah',
+            '1. Pokok tidak subur<br>2. Ada 'frond skirting'<br>3. Tidak produktif<br>4. Ada jasad berbuah',
+            '1. Pokok yang telah tumbang<br>2. Batang patah di bahagian atas atau bawah<br>3. Mati<br>4. Ada jasad berbuah',
+            '1. Pokok tidak subur atau kelihatan 'stress'<br>2. Ada 'frond skirting'<br>3. Tiada Jasad Berbuah, batang mereput dan miselium putih pada pangkal pokok',
             'Pokok Sihat',
-            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau water stress'
+            '1. Pokok selain kategori di atas<br>2. Menunjukkan simptom kekurangan nutrien atau 'water stress''
         ]
     })
 
