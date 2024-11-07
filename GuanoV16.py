@@ -142,7 +142,7 @@ def main():
     dirawat_yield = hasilsemasa
     dibiar_yield = hasilsemasa
     dirawat_reduction = 0.1
-    dibiar_reduction = 0.6
+    dibiar_reduction = 0.3
 
     tahuntuai1 = tahuntuai + 1
     years = list(range(tahuntuai1, 26))
@@ -163,16 +163,16 @@ def main():
 
     
     st.write(df)
-    st.write('Nota: Andaian pengurangan hasil sehingga 60% setahun jika dibiar tanpa kawalan dan 10% jika dikawal.')
+    st.write('Nota: Andaian pengurangan hasil sehingga 30% setahun jika dibiar tanpa kawalan dan 10% jika dikawal.')
 
     fig, ax = plt.subplots(figsize=(10, 6))
-    ax.plot(years, dirawat_yields, label='Kawalan')
-    ax.plot(years, dibiar_yields, label='Tiada Kawalan')
+    ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x')
+    ax.plot(years, dibiar_yields, label='Tiada Kawalan',color='green', marker='o')
     ax.set_xlabel('Tahun')
     ax.set_ylabel('Hasil (MT)')
     ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan')
     ax.legend()
-
+    ax1.grid(True)
     st.pyplot(fig)
 
     st.write("---")
