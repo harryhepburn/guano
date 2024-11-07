@@ -142,8 +142,8 @@ def main():
 
     dirawat_yield = hasilsemasa
     dibiar_yield = hasilsemasa
-    dirawat_reduction = 0.1
-    dibiar_reduction = 0.3
+    dirawat_reduction = 0.05
+    dibiar_reduction = 0.2
 
     tahuntuai1 = tahuntuai + 1
     years = list(range(tahuntuai1, 26))
@@ -164,7 +164,7 @@ def main():
 
     
     st.write(df)
-    st.write('Nota: Andaian pengurangan hasil sehingga 30% setahun jika dibiar tanpa kawalan dan 10% jika dikawal.')
+    st.write('Nota: Andaian pengurangan hasil sehingga 20% setahun jika dibiar tanpa kawalan dan 5% jika dikawal.')
 
     #fig, ax = plt.subplots(figsize=(4, 2.5))
     #ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x', markersize=4, linewidth=1.5)
