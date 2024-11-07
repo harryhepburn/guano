@@ -166,20 +166,20 @@ def main():
     st.write(df)
     st.write('Nota: Andaian pengurangan hasil sehingga 30% setahun jika dibiar tanpa kawalan dan 10% jika dikawal.')
 
-    fig, ax = plt.subplots(figsize=(4, 2.5))
-    ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x', markersize=4, linewidth=1.5)
-    ax.plot(years, dibiar_yields, label='Tiada Kawalan', color='red', marker='o', markersize=4, linewidth=1.5)
-    ax.set_xlabel('Tahun', fontsize=8)
-    ax.set_ylabel('Hasil (MT)', fontsize=8)
-    ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan', fontsize=9)
-    ax.legend(fontsize=7)
-    ax.grid(True, linestyle='--', alpha=0.7)
-    ax.tick_params(axis='both', labelsize=7)  # Make tick labels smaller
+    #fig, ax = plt.subplots(figsize=(4, 2.5))
+    #ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x', markersize=4, linewidth=1.5)
+    #ax.plot(years, dibiar_yields, label='Tiada Kawalan', color='red', marker='o', markersize=4, linewidth=1.5)
+    ##ax.set_xlabel('Tahun', fontsize=8)
+    #ax.set_ylabel('Hasil (MT)', fontsize=8)
+    #ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan', fontsize=9)
+    #ax.legend(fontsize=7)
+    #ax.grid(True, linestyle='--', alpha=0.7)
+    #ax.tick_params(axis='both', labelsize=7)  # Make tick labels smaller
 
     # Adjust layout to prevent label cutoff
-    plt.tight_layout()
+    #plt.tight_layout()
     
-    st.pyplot(fig)
+    #st.pyplot(fig)
 
     #####
     
@@ -213,12 +213,17 @@ def main():
 
     # Update layout
     fig.update_layout(
-        title='Perbandingan Hasil Antara Kawalan dan Tiada Kawalan',
-        title_x=0.5,  # Center the title
+        title=dict(
+            text='Perbandingan Hasil Antara Kawalan dan Tiada Kawalan',
+            x=0.5,
+            xanchor='center',
+            yanchor='top',
+            font=dict(size=14)
+        ),
         xaxis_title='Tahun',
         yaxis_title='Hasil (MT)',
-        width=500,    # Width of the figure
-        height=300,   # Height of the figure
+        width=500,    
+        height=300,   
         showlegend=True,
         legend=dict(
             yanchor="top",
@@ -226,10 +231,10 @@ def main():
             xanchor="right",
             x=0.99
         ),
-        margin=dict(l=50, r=50, t=50, b=50),  # Adjust margins
-        template='plotly_white',  # Clean template
+        margin=dict(l=50, r=50, t=50, b=50),
+        template='plotly_white',
         plot_bgcolor='white'
-    )
+        )
 
     # Add grid
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='LightGray')
