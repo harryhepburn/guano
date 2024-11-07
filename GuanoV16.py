@@ -2,6 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import streamlit.components.v1 as components
 
 
@@ -181,8 +182,8 @@ def main():
     st.pyplot(fig)
 
     #####
-    import plotly.express as px
-    import plotly.graph_objects as go
+    
+    
 
     # Create the figure
     fig = go.Figure()
