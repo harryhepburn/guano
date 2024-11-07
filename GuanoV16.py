@@ -172,7 +172,8 @@ def main():
     ax.set_ylabel('Hasil (MT)')
     ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan')
     ax.legend()
-    ax1.grid(True)
+    ax.grid(True)
+    
     st.pyplot(fig)
 
     st.write("---")
