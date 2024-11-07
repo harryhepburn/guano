@@ -223,7 +223,7 @@ def main():
         legend=dict(
             yanchor="top",
             y=0.99,
-            xanchor="left",
+            xanchor="right",
             x=0.01
         ),
         margin=dict(l=50, r=50, t=50, b=50),  # Adjust margins
