@@ -165,9 +165,9 @@ def main():
     st.write(df)
     st.write('Nota: Andaian pengurangan hasil sehingga 30% setahun jika dibiar tanpa kawalan dan 10% jika dikawal.')
 
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(8, 5))
     ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x')
-    ax.plot(years, dibiar_yields, label='Tiada Kawalan',color='green', marker='o')
+    ax.plot(years, dibiar_yields, label='Tiada Kawalan',color='red', marker='o')
     ax.set_xlabel('Tahun')
     ax.set_ylabel('Hasil (MT)')
     ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan')
