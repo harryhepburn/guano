@@ -176,6 +176,19 @@ def main():
     
     st.pyplot(fig)
 
+    fig, ax = plt.subplots(figsize=(4, 2.5))
+    ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x', markersize=4, linewidth=1.5)
+    ax.plot(years, dibiar_yields, label='Tiada Kawalan', color='red', marker='o', markersize=4, linewidth=1.5)
+    ax.set_xlabel('Tahun', fontsize=8)
+    ax.set_ylabel('Hasil (MT)', fontsize=8)
+    ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan', fontsize=9)
+    ax.legend(fontsize=7)
+    ax.grid(True, linestyle='--', alpha=0.7)
+    ax.tick_params(axis='both', labelsize=7)  # Make tick labels smaller
+
+    # Adjust layout to prevent label cutoff
+    plt.tight_layout()
+
     st.write("---")
     st.success("Terima Kasih Kerana Menggunakan GUANO")
 
