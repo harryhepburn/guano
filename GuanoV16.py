@@ -1,6 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
+import plotly.express as px
 import streamlit.components.v1 as components
 
 
@@ -63,6 +64,29 @@ def main():
         serangan_e = st.number_input("Bilangan Pokok Kategori E", min_value=0, value=0)
         serangan_f = st.number_input("Bilangan Pokok Kategori F", min_value=0, value=0)
 
+    # Create data for pie chart
+    data = {
+        'Kategori A': serangan_a,
+        'Kategori B': serangan_b,
+        'Kategori C': serangan_c,
+        'Kategori D': serangan_d,
+        'Kategori E': serangan_e,
+        'Kategori F': serangan_f
+    }
+    
+   
+    # Create pie chart using plotly
+    total = sum(data.values())
+    if total > 0:  # Only show chart if there's data
+        fig = px.pie(
+            values=list(data.values()),
+            names=list(data.keys()),
+            title='Taburan Kategori',
+            labels={'label': 'Kategori', 'value': 'Bilangan Pokok'}
+        )
+        st.plotly_chart(fig)
+    
+    
     st.write("---")
     st.subheader("Hasil Analisis")
     pokok_sakit = serangan_a + serangan_b + serangan_c + serangan_d + serangan_f
