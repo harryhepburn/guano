@@ -188,12 +188,13 @@ def main():
 
     # Adjust layout to prevent label cutoff
     plt.tight_layout()
+    
+    st.pyplot(fig)
 
     st.write("---")
     st.success("Terima Kasih Kerana Menggunakan GUANO")
 
-    st.pyplot(fig)
-    
+      
     st.write("""
     - Dibangunkan oleh Team KIK Wilayah Raja Alias: **BIANGLALA** 
     - Ahli Kumpulan: Rafizan, Haslina, Izzati, Noorain, Baizura, Farah, Andi, dan Amilin
