@@ -174,7 +174,7 @@ def main():
     #ax.legend()
     #ax.grid(True)
     
-    st.pyplot(fig)
+    #st.pyplot(fig)
 
     fig, ax = plt.subplots(figsize=(4, 2.5))
     ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x', markersize=4, linewidth=1.5)
