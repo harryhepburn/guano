@@ -96,13 +96,13 @@ def main():
     colx, col3, col4, col5 = st.columns(4)
     colx.metric("Jumlah Pokok Sihat", pokok_sihat)
     col3.metric("Jumlah Pokok Tidak Sihat", pokok_sakit)
-    col4.metric("Pokok Memerlukan 'Soil Mounding'", serangan_a)
+    col4.metric("Pokok Memerlukan _Soil Mounding_", serangan_a)
     col5.metric("Pokok Memerlukan Sanitasi", sanitasi)
 
     st.write("---")
     st.subheader("Pengiraan Kos")
 
-    cost_soil_mounding = st.number_input("Kos 'Soil Mounding' per pokok (RM)", min_value=0.0, value=20.0)
+    cost_soil_mounding = st.number_input("Kos _Soil Mounding_ per pokok (RM)", min_value=0.0, value=20.0)
     cost_sanitasi = st.number_input("Kos Sanitasi per pokok (RM)", min_value=0.0, value=35.0)
 
     cost_a = serangan_a * cost_soil_mounding
@@ -110,7 +110,7 @@ def main():
     total_cost = cost_a + cost_b_c
 
     col6, col7, col8 = st.columns(3)
-    col6.metric("Kos 'Soil Mounding'", f"RM {cost_a:.2f}")
+    col6.metric("Kos _Soil Mounding_", f"RM {cost_a:.2f}")
     col7.metric("Kos Sanitasi Pokok", f"RM {cost_b_c:.2f}")
     col8.metric("Jumlah Kos", f"RM {total_cost:.2f}")
 
@@ -165,17 +165,6 @@ def main():
     st.write(df)
     st.write('Nota: Andaian pengurangan hasil sehingga 30% setahun jika dibiar tanpa kawalan dan 10% jika dikawal.')
 
-    #fig, ax = plt.subplots(figsize=(5, 3))
-    #ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x')
-    #ax.plot(years, dibiar_yields, label='Tiada Kawalan',color='red', marker='o')
-    #ax.set_xlabel('Tahun')
-    #ax.set_ylabel('Hasil (MT)')
-    #ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan')
-    #ax.legend()
-    #ax.grid(True)
-    
-    #st.pyplot(fig)
-
     fig, ax = plt.subplots(figsize=(4, 2.5))
     ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x', markersize=4, linewidth=1.5)
     ax.plot(years, dibiar_yields, label='Tiada Kawalan', color='red', marker='o', markersize=4, linewidth=1.5)
@@ -190,6 +179,64 @@ def main():
     plt.tight_layout()
     
     st.pyplot(fig)
+
+    #####
+    import plotly.express as px
+    import plotly.graph_objects as go
+
+    # Create the figure
+    fig = go.Figure()
+
+    # Add traces for both lines
+    fig.add_trace(
+        go.Scatter(
+            x=years, 
+            y=dirawat_yields, 
+            name='Kawalan',
+            line=dict(color='green', width=2),
+            mode='lines+markers',
+            marker=dict(symbol='x', size=6)
+        )
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=years, 
+            y=dibiar_yields, 
+            name='Tiada Kawalan',
+            line=dict(color='red', width=2),
+            mode='lines+markers',
+            marker=dict(symbol='circle', size=6)
+        )
+    )
+
+    # Update layout
+    fig.update_layout(
+        title='Perbandingan Hasil Antara Kawalan dan Tiada Kawalan',
+        title_x=0.5,  # Center the title
+        xaxis_title='Tahun',
+        yaxis_title='Hasil (MT)',
+        width=500,    # Width of the figure
+        height=300,   # Height of the figure
+        showlegend=True,
+        legend=dict(
+            yanchor="top",
+            y=0.99,
+            xanchor="left",
+            x=0.01
+        ),
+        margin=dict(l=50, r=50, t=50, b=50),  # Adjust margins
+        template='plotly_white',  # Clean template
+        plot_bgcolor='white'
+    )
+
+    # Add grid
+    fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='LightGray')
+    fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='LightGray')
+
+    # Display in Streamlit
+    st.plotly_chart(fig, use_container_width=True)
+    ###
 
     st.write("---")
     st.success("Terima Kasih Kerana Menggunakan GUANO")
