@@ -214,16 +214,51 @@ def main():
     else:
         st.warning(f"Jumlah kos adalah lebih daripada kerugian sebanyak RM {abs(bezarugi):,.2f}")
 
+
+    # [Previous code remains the same until the Anggaran Hasil section]
+    
     st.write("---")
     st.subheader("Anggaran Hasil")
 
     hasilsemasa = (0.1 * serangan_a) + (0.1 * serangan_d) + (0.18 * serangan_e) + (0.15 * serangan_f)
     st.metric("Hasil Semasa", f"{hasilsemasa:.2f} MT/Tahun")
 
+    # Add new section for custom yield reduction percentages
+    st.write("### Tetapan Kadar Pengurangan Hasil")
+    
+    # Create two columns for the input fields
+    col_reduction1, col_reduction2 = st.columns(2)
+    
+    with col_reduction1:
+        # Add help text to explain the input
+        dirawat_reduction = st.number_input(
+            "Kadar Pengurangan Hasil dengan Kawalan (%)", 
+            min_value=0.0, 
+            max_value=100.0, 
+            value=5.0, 
+            help="Masukkan anggaran peratus pengurangan hasil tahunan selepas rawatan kawalan"
+        ) / 100
+
+    with col_reduction2:
+        # Add help text to explain the input
+        dibiar_reduction = st.number_input(
+            "Kadar Pengurangan Hasil tanpa Kawalan (%)", 
+            min_value=0.0, 
+            max_value=100.0, 
+            value=20.0, 
+            help="Masukkan anggaran peratus pengurangan hasil tahunan tanpa sebarang rawatan"
+        ) / 100
+
+    # Add information box to explain the default values
+    st.info("""
+        📝 Nota: 
+        - Tetapan nilai untuk pengurangan hasil dengan kawalan adalah 5% setahun
+        - Tetapan nilai untuk pengurangan hasil tanpa kawalan adalah 20% setahun
+        - Anda boleh mengubah nilai ini mengikut keperluan dan keadaan ladang anda
+    """)
+
     dirawat_yield = hasilsemasa
     dibiar_yield = hasilsemasa
-    dirawat_reduction = 0.05
-    dibiar_reduction = 0.2
 
     tahuntuai1 = tahuntuai + 1
     years = list(range(tahuntuai1, 26))
@@ -236,36 +271,18 @@ def main():
         dirawat_yields.append(dirawat_yield)
         dibiar_yields.append(dibiar_yield)
 
+    # Create DataFrame for comparison
     df = pd.DataFrame({
         'Tahun': years,
         'Kawalan (MT)': dirawat_yields,
         'Tiada Kawalan (MT)': dibiar_yields
     })
 
-    
+    # Display the DataFrame
+    st.write("### Jadual Perbandingan Hasil")
     st.write(df)
-    st.write('Nota: Andaian pengurangan hasil sehingga 20% setahun jika dibiar tanpa kawalan dan 5% jika dikawal.')
 
-    #fig, ax = plt.subplots(figsize=(4, 2.5))
-    #ax.plot(years, dirawat_yields, label='Kawalan', color='green', marker='x', markersize=4, linewidth=1.5)
-    #ax.plot(years, dibiar_yields, label='Tiada Kawalan', color='red', marker='o', markersize=4, linewidth=1.5)
-    ##ax.set_xlabel('Tahun', fontsize=8)
-    #ax.set_ylabel('Hasil (MT)', fontsize=8)
-    #ax.set_title('Perbandingan Hasil Antara Kawalan dan Tiada Kawalan', fontsize=9)
-    #ax.legend(fontsize=7)
-    #ax.grid(True, linestyle='--', alpha=0.7)
-    #ax.tick_params(axis='both', labelsize=7)  # Make tick labels smaller
-
-    # Adjust layout to prevent label cutoff
-    #plt.tight_layout()
-    
-    #st.pyplot(fig)
-
-    #####
-    
-    
-
-    # Create the figure
+    # Create the comparison plot
     fig = go.Figure()
 
     # Add traces for both lines
@@ -314,18 +331,24 @@ def main():
         margin=dict(l=50, r=50, t=50, b=50),
         template='plotly_white',
         plot_bgcolor='white'
-        )
+    )
 
     # Add grid
     fig.update_xaxes(showgrid=True, gridwidth=1, gridcolor='LightGray')
     fig.update_yaxes(showgrid=True, gridwidth=1, gridcolor='LightGray')
 
-    # Display in Streamlit
+    # Display plot in Streamlit
     st.plotly_chart(fig, use_container_width=True)
-    ###
+
+    # Calculate and display the total yield difference
+    total_dirawat = sum(dirawat_yields)
+    total_dibiar = sum(dibiar_yields)
+    yield_difference = total_dirawat - total_dibiar
+    
+
 
     st.write("---")
-    st.success("Terima Kasih Kerana Menggunakan GUANO")
+    st.success("Terima Kasih Kerana Menggunakan GUANO Calculator")
 
 
 if __name__ == "__main__":
