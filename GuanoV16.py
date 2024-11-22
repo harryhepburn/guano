@@ -5,12 +5,97 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit.components.v1 as components
 
+def about_page():
+    st.header("🍄 GUANO Calculator - Kalkulator Kos Rawatan Ganoderma")
+    
+    col1, col2 = st.columns([1, 2])
+    
+    with col1:
+        st.image("https://www.sawitsetara.co/wp-content/uploads/2023/08/Jamur-Ganoderma-tumbuh-pada-pangkal-batang-tanaman-sawit.jpg", width=300)
+    
+    with col2:
+        st.markdown("""
+        ### Projek Kami
+        GUANO Calculator adalah alat inovatif yang direka untuk membantu pengurusan ladang
+        menilai dan mengurus jangkitan Ganoderma di ladang.
 
+        #### Fungsi Utama:
+        - 📊 Membuat bancian Ganoderma
+        - 💰 Menganggarkan kos kawalan
+        - 📈 Menjangkakan kehilangan hasil
+        """)
+    
+    st.write("---")
+    
+    st.subheader("Pasukan Kami: BIANGLALA")
+    
+    components.iframe("https://docs.google.com/presentation/d/e/2PACX-1vS4bQV1ybHEoxF-9zlP3Wgd3XkLUEgTs6TG3tEbBg5D9NHNHO8R0qJjByEmF0WI29ZB-tTVjGxDNG8Q/embed?start=false&loop=false&delayms=3000", height=432)
+    
+    
+    team_members = [
+        "Rafizan", "Haslina", "Izzati", "Noorain", 
+        "Baizura", "Farah", "Andi", "Amilin"
+    ]
+    
+    # Display team members in a grid
+    cols = st.columns(4)
+    for i, member in enumerate(team_members):
+        cols[i % 4].markdown(f"- {member}")
+    
+    st.write("---")
+    
+    st.subheader("Penyelaras")
+    st.markdown("""
+    - Ariff
+    - Zamri
+    
+    #RAhandal | #SEGALANYA FELDA
+    """)
 
 def main():
-    st.set_page_config(page_title="GUANO Calculator", page_icon="🌴", layout="wide")
+    # Set page configuration with Ganoderma icon
+    st.set_page_config(
+        page_title="GUANO Calculator", 
+        page_icon="🍄", 
+        layout="wide"
+    )
     
-    st.title("GUANO CALCULATOR")
+    # Sidebar for navigation
+    st.sidebar.title("🍄 GUANO Calculator")
+    menu = st.sidebar.radio(
+        "Navigasi", 
+        ["Kalkulator", "Info", "Bantuan"], 
+        index=0
+    )
+    
+    if menu == "Info":
+        about_page()
+        return
+    
+    elif menu == "Bantuan":
+        st.header("🆘 Panduan")
+        st.markdown("""
+        ### Cara Menggunakan GUANO Calculator
+        
+        1. **Membuat Bancian**
+           - Masukkan bilangan pokok sawit mengikut kategori (A-F)
+           - Rujuk panduan bergambar sekiranya keliru semasa membuat bancian
+        
+        2. **Anggaran Kos**
+           - Masukkan kos per pokok bagi kerja sanitasi dan _soil mounding_
+           - Kos akan dikira secara automatik berdasarkan bilangan pokok mengikut kategori
+        
+        3. **Anggaran Kehilangan Hasil**
+           - Masukkan harga BTS
+           - Tentukan umur pokok
+           - Lihat keputusan untuk menganggar kehilangan hasil dan kesan kewangan
+        """)
+        
+        st.info("Untuk maklumat lanjut berkaitan serangan Ganoderma, rujuk maklumat bergambar di halaman utama.")
+        return
+    
+    # Main Calculator Page
+    st.title("GUANO CALCULATOR 🍄")
     st.subheader("Kalkulator Kos Rawatan Ganoderma")
 
     st.write("### Kategori Jangkitan Ganoderma:")
@@ -41,29 +126,26 @@ def main():
     # Display the styled DataFrame
     st.write(styled_df.to_html(escape=False), unsafe_allow_html=True)
 
-     
     st.write("---")
     st.subheader("Panduan Bergambar Simptom Ganoderma")
 
+    # Slide show embedded
     components.iframe("https://docs.google.com/presentation/d/e/2PACX-1vScJ2zNxKlYKmsZbJkDxOy3ht9knLu_RypRmhgFmdvs8TWGQEksY_F-Gvp20G3Vng/embed?start=false&loop=false&delayms=3000", height=432)
 
-    
-
-    
     st.write("---")
     st.subheader("Bancian")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        serangan_a = st.number_input("Bilangan Pokok Kategori A", min_value=0, value=0)
-        serangan_b = st.number_input("Bilangan Pokok Kategori B", min_value=0, value=0)
-        serangan_c = st.number_input("Bilangan Pokok Kategori C", min_value=0, value=0)
+        serangan_a = st.number_input("Bilangan Pokok Kategori A", min_value=0, value=0, help="Healthy palms requiring soil mounding")
+        serangan_b = st.number_input("Bilangan Pokok Kategori B", min_value=0, value=0, help="Unproductive palms needing attention")
+        serangan_c = st.number_input("Bilangan Pokok Kategori C", min_value=0, value=0, help="Fallen or dead palms")
 
     with col2:
-        serangan_d = st.number_input("Bilangan Pokok Kategori D", min_value=0, value=0)
-        serangan_e = st.number_input("Bilangan Pokok Kategori E", min_value=0, value=0)
-        serangan_f = st.number_input("Bilangan Pokok Kategori F", min_value=0, value=0)
+        serangan_d = st.number_input("Bilangan Pokok Kategori D", min_value=0, value=0, help="Stressed palms with no visible decay")
+        serangan_e = st.number_input("Bilangan Pokok Kategori E", min_value=0, value=0, help="Completely healthy palms")
+        serangan_f = st.number_input("Bilangan Pokok Kategori F", min_value=0, value=0, help="Palms with nutrient or water stress")
 
     # Create data for pie chart
     data = {
@@ -75,7 +157,6 @@ def main():
         'Kategori F': serangan_f
     }
     
-   
     # Create pie chart using plotly
     total = sum(data.values())
     if total > 0:  # Only show chart if there's data
@@ -86,7 +167,6 @@ def main():
             labels={'label': 'Kategori', 'value': 'Bilangan Pokok'}
         )
         st.plotly_chart(fig)
-    
     
     st.write("---")
     st.subheader("Hasil Analisis")
@@ -111,9 +191,9 @@ def main():
     total_cost = cost_a + cost_b_c
 
     col6, col7, col8 = st.columns(3)
-    col6.metric("Kos _Soil Mounding_", f"RM {cost_a:.2f}")
-    col7.metric("Kos Sanitasi Pokok", f"RM {cost_b_c:.2f}")
-    col8.metric("Jumlah Kos", f"RM {total_cost:.2f}")
+    col6.metric("Kos _Soil Mounding_", f"RM {cost_a:,.2f}")
+    col7.metric("Kos Sanitasi Pokok", f"RM {cost_b_c:,.2f}")
+    col8.metric("Jumlah Kos", f"RM {total_cost:,.2f}")
 
     st.write("---")
     st.subheader("Anggaran Kerugian Hasil")
@@ -125,14 +205,14 @@ def main():
     kerugianRM = hargaBTS * kerugian1
     
     col9, col10 = st.columns(2)
-    col9.metric("Kerugian Hasil Berat BTS", f"{kerugian1:.2f} MT")
-    col10.metric("Kerugian Hasil BTS", f"RM {kerugianRM:.2f}")
+    col9.metric("Kerugian Hasil Berat BTS", f"{kerugian1:,.2f} MT")
+    col10.metric("Kerugian Hasil BTS", f"RM {kerugianRM:,.2f}")
 
     bezarugi = kerugianRM - total_cost
     if kerugianRM > total_cost:
-        st.info(f"Jumlah kos adalah kurang daripada kerugian sebanyak RM {bezarugi:.2f}")
+        st.info(f"Jumlah kos adalah kurang daripada kerugian sebanyak RM {bezarugi:,.2f}")
     else:
-        st.warning(f"Jumlah kos adalah lebih daripada kerugian sebanyak RM {abs(bezarugi):.2f}")
+        st.warning(f"Jumlah kos adalah lebih daripada kerugian sebanyak RM {abs(bezarugi):,.2f}")
 
     st.write("---")
     st.subheader("Anggaran Hasil")
@@ -247,14 +327,6 @@ def main():
     st.write("---")
     st.success("Terima Kasih Kerana Menggunakan GUANO")
 
-      
-    st.write("""
-    - Dibangunkan oleh Team KIK Wilayah Raja Alias: **BIANGLALA** 
-    - Ahli Kumpulan: Rafizan, Haslina, Izzati, Noorain, Baizura, Farah, Andi, dan Amilin
-    - Penyelaras: Ariff dan Zamri
-    - #RAhandal
-    - #SEGALANYA FELDA
-    """)
-    
+
 if __name__ == "__main__":
     main()
