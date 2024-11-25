@@ -347,10 +347,8 @@ def main():
     yield_difference = total_dirawat - total_dibiar
     
     # Initialize OpenAI API Key
-    openai.api_key = st.secrets["OPENAI_API_KEY"]
-    if not openai.api_key:
-        st.error("API key is missing!")
-
+    openai.api_key = "sk-svcacct-GFhVSawO8RSdBK-MSqrouMT6wUuW0lIKPhgNI9lqJbtYbneLR7E9uLlL64mzg8FPT3BlbkFJSt2kryp4uxyCYNanJ47X_DE2mLONOqu0Vy5C9-Y4V0zLD2MrdGNF1ckSpuk_fiIA"
+   
     # Streamlit App
     st.title("Guano AI")
 
