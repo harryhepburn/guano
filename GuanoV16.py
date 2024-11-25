@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit.components.v1 as components
+import openai
 
 def about_page():
     st.header("🍄 GUANO Calculator - Kalkulator Kos Rawatan Ganoderma")
