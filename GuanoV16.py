@@ -345,6 +345,37 @@ def main():
     total_dibiar = sum(dibiar_yields)
     yield_difference = total_dirawat - total_dibiar
     
+    # Initialize OpenAI API Key
+    openai.api_key = "sk-svcacct-dWx8MNRB9A5z2G-D2nEpxwqOkT8hdz7RK9RSTI6JJQET74aXtt2-_BtKo1cafkD3T3BlbkFJ9QfEAvPjFrI3ClMEfzXPUNt0k6QmBklDjJq5nirr8v30toLuNohYmPbusFKcEDwA"
+
+    # Streamlit App
+    st.title("Guano AI")
+
+    # Main Chat Interface
+    st.subheader("Ada pertanyaan lanjut? Guano AI sedia membantu.")
+    
+    # Input box for user queries
+    user_input = st.text_input("Tuliskan Soalan Anda", "", key="user_input")
+
+    if st.button("Hantar"):
+        if user_input.strip():
+            # Call OpenAI API
+            with st.spinner("Berfikir..."):
+                try:
+                    response = openai.ChatCompletion.create(
+                        model="gpt-3.5-turbo",
+                        messages=[{"role": "user", "content": user_input}],
+                        max_tokens=150,
+                        temperature=0.7,
+                    )
+                    # Display the assistant's response
+                    assistant_message = response['choices'][0]['message']['content']
+                    st.success("Jawapan:")
+                    st.write(assistant_message)
+                except Exception as e:
+                    st.error(f"Error: {e}")
+        else:
+            st.warning("Tuliskan soalan anda.")
 
 
     st.write("---")
