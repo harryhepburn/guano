@@ -347,36 +347,36 @@ def main():
     yield_difference = total_dirawat - total_dibiar
     
     # Initialize OpenAI API Key
-    openai.api_key = "sk-svcacct-GFhVSawO8RSdBK-MSqrouMT6wUuW0lIKPhgNI9lqJbtYbneLR7E9uLlL64mzg8FPT3BlbkFJSt2kryp4uxyCYNanJ47X_DE2mLONOqu0Vy5C9-Y4V0zLD2MrdGNF1ckSpuk_fiIA"
+    #openai.api_key = "XXXX"
    
     # Streamlit App
-    st.title("Guano AI")
+    #st.title("Guano AI")
 
     # Main Chat Interface
-    st.subheader("Ada pertanyaan lanjut? Guano AI sedia membantu.")
+    #st.subheader("Ada pertanyaan lanjut? Guano AI sedia membantu.")
     
     # Input box for user queries
-    user_input = st.text_input("Tuliskan Soalan Anda", "", key="user_input")
+    #user_input = st.text_input("Tuliskan Soalan Anda", "", key="user_input")
 
-    if st.button("Hantar"):
-        if user_input.strip():
+    #if st.button("Hantar"):
+    #    if user_input.strip():
             # Call OpenAI API
-            with st.spinner("Berfikir..."):
-                try:
-                    response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",
-                        messages=[{"role": "user", "content": user_input}],
-                        max_tokens=150,
-                        temperature=0.7,
-                    )
+    #        with st.spinner("Berfikir..."):
+    #            try:
+    #                response = openai.ChatCompletion.create(
+    #                    model="gpt-3.5-turbo",
+    #                    messages=[{"role": "user", "content": user_input}],
+    #                    max_tokens=150,
+    #                    temperature=0.7,
+    #                )
                     # Display the assistant's response
-                    assistant_message = response['choices'][0]['message']['content']
-                    st.success("Jawapan:")
-                    st.write(assistant_message)
-                except Exception as e:
-                    st.error(f"Error: {e}")
-        else:
-            st.warning("Tuliskan soalan anda.")
+    #                assistant_message = response['choices'][0]['message']['content']
+    #                st.success("Jawapan:")
+    #                st.write(assistant_message)
+    #            except Exception as e:
+    #                st.error(f"Error: {e}")
+    #    else:
+    #        st.warning("Tuliskan soalan anda.")
 
 
     st.write("---")
