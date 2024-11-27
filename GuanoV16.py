@@ -362,7 +362,7 @@ def main():
 
     if st.button("Hantar"):
         if user_input.strip():
-            Call OpenAI API
+    #Call OpenAI API
             with st.spinner("Berfikir..."):
                 try:
                     response = openai.ChatCompletion.create(
